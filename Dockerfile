@@ -3,6 +3,8 @@ FROM quay.io/ukhomeofficedigital/openjdk8-gradle:v0.1.0
 ENTRYPOINT "bin/start.sh"
 CMD []
 
+RUN mkdir -p /templates
+
 ENV SMTP_REQUIRE_TSL=false
 ENV SMTP_START_TSL_ENABLED=false
 ENV SMTP_ON_SSL_CONNECT=false

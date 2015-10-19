@@ -118,6 +118,10 @@ In order to run this container you'll need docker installed.
 
 #### Usage
 
+##### Kubernetes Examples
+
+You can find Kubernetes examples in the [kb8 directory](kb8).
+
 ##### Container Parameters
 
 If you run the application without parameters it'll start the application.
@@ -141,6 +145,7 @@ docker run quay.io/ukhomeofficedigital/email-api:v0.1.0 bash
 * `SMTP_ON_SSL_CONNECT` SSL On Connect (Default: false)
 * `SMTP_USERNAME` If this is populated we will attempt to authenticate with the SMTP server (Default: "")
 * `SMTP_PASSWORD` Used if SMTP_USERNAME is set (Default: "")
+* `SMTP_PASSWORD_PATH` If used this will overwrite SMTP_PASSWORD with the contents of this file.
 * `TEMPLATE_PATH` Where to look for templates to use (Default: "/templates")
 
 ##### Useful File Locations

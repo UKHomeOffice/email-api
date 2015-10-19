@@ -1,12 +1,10 @@
 #!/bin/bash
 
-mkdir -p /templates
-
 CONFIGURATION=src/main/resources/configuration.yaml
-${SECRETS_PATH:='/etc/secrets'}
+${SMTP_PASSWORD_PATH:='/smtp-secrets/password'}
 
-if [ -f ${SECRETS_PATH}/password ]; then
-    export SMTP_PASSWORD=`cat ${SECRETS_PATH}/password`
+if [ -f ${SMTP_PASSWORD_PATH} ]; then
+    export SMTP_PASSWORD=$( cat ${SMTP_PASSWORD_PATH} )
 fi
 
 if [ $# -eq 0 ]; then
