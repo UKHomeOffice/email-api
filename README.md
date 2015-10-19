@@ -40,8 +40,8 @@ running the service at localhost on the default port).
 {
   "sender": "example@example.org",
   "subject": "Subject of the email",
-  "htmlTemplate": "test",
-  "textTemplate": "test",
+  "htmlTemplate": "test-html",
+  "textTemplate": "test-text",
   "variables": {"user":"user"},
   "recipients": [
     "test@example.com"
