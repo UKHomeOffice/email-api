@@ -1,0 +1,15 @@
+FROM quay.io/ukhomeofficedigital/openjdk8-gradle:v0.1.0
+
+ENTRYPOINT "bin/start.sh"
+CMD []
+
+ENV SMTP_REQUIRE_TSL=false
+ENV SMTP_START_TSL_ENABLED=false
+ENV SMTP_ON_SSL_CONNECT=false
+ENV SMTP_USERNAME=""
+ENV SMTP_PASSWORD=""
+ENV SMTP_PORT=25
+ENV TEMPLATE_PATH=/templates
+
+EXPOSE 8080
+EXPOSE 8081

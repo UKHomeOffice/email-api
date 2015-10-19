@@ -1,0 +1,41 @@
+group 'uk.gov.homeoffice.emailapi'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+mainClassName = "uk.gov.homeoffice.emailapi.EmailApiApplication"
+
+repositories {
+    mavenCentral()
+}
+
+project.ext {
+    dropwizardVersion = '0.8.2'
+    freemarkerVersion = '2.3.23'
+    apacheCommonsEmailVersion = '1.4'
+    dropwizardSwaggerVersion = '0.7.0'
+    swaggerCoreVersion = '1.5.3'
+
+    junitVersion = '4.12'
+    mockitoVersion = '1.+'
+}
+
+dependencies {
+    compile(
+            "io.dropwizard:dropwizard-core:$dropwizardVersion",
+            "org.freemarker:freemarker-gae:$freemarkerVersion",
+            "org.apache.commons:commons-email:$apacheCommonsEmailVersion",
+            "io.federecio:dropwizard-swagger:$dropwizardSwaggerVersion",
+            "io.swagger:swagger-core:$swaggerCoreVersion"
+    )
+
+    testCompile(
+            "io.dropwizard:dropwizard-testing:$dropwizardVersion",
+            "junit:junit:$junitVersion",
+            "org.mockito:mockito-core:$mockitoVersion"
+    )
+}

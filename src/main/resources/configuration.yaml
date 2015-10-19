@@ -1,0 +1,18 @@
+logging:
+  level: INFO
+  loggers:
+    io.dropwizard: INFO
+  appenders:
+    - type: console
+
+emailTemplatePath: ${TEMPLATE_PATH}
+hostname: ${SMTP_HOSTNAME}
+port: ${SMTP_PORT}
+username: ${SMTP_USERNAME}
+password: ${SMTP_PASSWORD}
+onSslConnect: ${SMTP_ON_SSL_CONNECT}
+startTslEnabled: ${SMTP_START_TSL_ENABLED}
+requireTsl: ${SMTP_REQUIRE_TSL}
+
+swagger:
+  resourcePackage: uk.gov.homeoffice.emailapi.resources
