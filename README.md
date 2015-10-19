@@ -8,6 +8,10 @@ This is an service that will allow you to send templated emails via a RESTful AP
 
 These instructions will cover usage information for developing stand alone, and running the docker container.
 
+### Clients
+
+* [Java](https://github.com/UKHomeOffice/email-api-client-java)
+
 ### Usage
 
 The first step to using this API is to create some templates for it to use. To do this we use 
