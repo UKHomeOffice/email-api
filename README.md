@@ -124,7 +124,7 @@ In order to run this container you'll need docker installed.
 
 ##### Kubernetes Examples
 
-You can find Kubernetes examples in the [kb8 directory](kb8).
+You can find Kubernetes examples in the [k8s directory](k8s).
 
 ##### Container Parameters
 
