@@ -94,7 +94,7 @@ SMTP_ON_SSL_CONNECT=false \
 SMTP_PASSWORD="" SMTP_USERNAME="" \
 SMTP_PORT=1025 \
 SMTP_HOSTNAME=localhost \
-TEMPLATE_PATH=/tmp \ 
+TEMPLATE_PATH=/tmp \
 ./build/install/email-api/bin/email-api server src/main/resources/configuration.yaml 
 ```
 
