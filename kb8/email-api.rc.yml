@@ -1,0 +1,38 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: email-api
+  labels:
+    name: email-api
+spec:
+  replicas: 2
+  selector:
+    name: email-api
+  template:
+    metadata:
+      labels:
+        name: email-api
+    spec:
+      containers:
+        - name: email-api
+          image: quay.io/ukhomeofficedigital/email-api:v0.1.0
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: httpadmin
+              containerPort: 8081
+          env:
+            - name: SMTP_HOSTNAME
+              value: smtp.yourhost.example.com
+            - name: SMTP_USERNAME
+              value: youruser
+            - name: SMTP_PASSWORD_PATH
+              value: /secrets/password.txt
+          volumeMounts:
+            - mountPath: /secrets
+              name: secret-volume
+              readOnly: true
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: smtp-secrets
