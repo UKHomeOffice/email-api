@@ -127,13 +127,13 @@ You can find Kubernetes examples in the [kb8 directory](kb8).
 If you run the application without parameters it'll start the application.
 
 ```shell
-docker run quay.io/ukhomeofficedigital/email-api:v0.1.0
+docker run quay.io/ukhomeofficedigital/email-api:v1.0.0
 ```
 
 Otherwise it'll run the command you provide. For example the command below will run bash.
 
 ```shell
-docker run quay.io/ukhomeofficedigital/email-api:v0.1.0 bash
+docker run quay.io/ukhomeofficedigital/email-api:v1.0.0 bash
 ```
 
 ##### Environment Variables
