@@ -4,6 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 import org.apache.commons.mail.EmailException;
 import uk.gov.homeoffice.emailapi.entities.TemplatedEmail;
 import uk.gov.homeoffice.emailapi.service.TemplatedEmailSender;
@@ -29,6 +31,9 @@ public class EmailSendingResource {
         this.templatedEmailSender = templatedEmailSender;
     }
 
+    @ApiResponses(value = {@ApiResponse(code = 204, message = "Successfully sent"),
+        @ApiResponse(code = 400, message = "Invalid Email Template Request Sent, or Template in request does not exist"),
+        @ApiResponse(code = 500, message = "Email failed to send")})
     @POST
     @Timed
     @ApiOperation("Send an email based on a template")
