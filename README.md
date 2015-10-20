@@ -1,6 +1,6 @@
 # Email API
 
-[![Build Status](https://travis-ci.org/UKHomeOffice/email-api.svg?branch=master)](https://travis-ci.org/UKHomeOffice/email-api)
+[![GitHub version](https://badge.fury.io/gh/ukhomeoffice%2Femail-api.svg)](https://badge.fury.io/gh/ukhomeoffice%2Femail-api) [![Build Status](https://travis-ci.org/UKHomeOffice/email-api.svg?branch=master)](https://travis-ci.org/UKHomeOffice/email-api) [![Docker Repository on Quay.io](https://quay.io/repository/ukhomeofficedigital/email-api/status "Docker Repository on Quay.io")](https://quay.io/repository/ukhomeofficedigital/email-api)
 
 This is an service that will allow you to send templated emails via a RESTful API. 
 
@@ -10,7 +10,19 @@ These instructions will cover usage information for developing stand alone, and 
 
 ### Clients
 
-* [Java](https://github.com/UKHomeOffice/email-api-client-java)
+#### Java Email Api Client
+
+Client Generated from the swagger file from this API.
+
+Includes MVN and Gradle imports, for easy inclusion
+
+[[github](https://github.com/UKHomeOffice/email-api-client-java)]
+
+#### JavaScript swagger-client (Swagger JS library)
+
+This is the official Swagger javascript client for use with swagger enabled APIs (such as this one). Simply provide is the swagger.json ('yourhost:8080/swagger.json' on this project), to have a working client.
+
+[[npm](https://www.npmjs.com/package/swagger-client)]
 
 ### Usage
 
