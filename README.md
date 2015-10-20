@@ -177,7 +177,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-See also the list of [contributors](https://github.com/UKHomeOffice/email-api/contributors) who 
+See the list of [contributors](https://github.com/UKHomeOffice/email-api/contributors) who 
 participated in this project.
 
 ## License
