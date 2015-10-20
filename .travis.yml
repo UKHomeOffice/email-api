@@ -7,3 +7,4 @@ services:
 
 script:
   - docker build -t quay.io/ukhomeofficedigital/email-api:travis .
+  - ./gradlew test
