@@ -16,7 +16,7 @@ Client Generated from the swagger file from this API.
 
 Includes MVN and Gradle imports, for easy inclusion
 
-[[github](https://github.com/UKHomeOffice/email-api-client-java)]
+[[github](https://github.com/UKHomeOffice/email-api-client-java)] [[jitpack](https://jitpack.io/#UKHomeOffice/email-api-client-java)]
 
 #### JavaScript swagger-client (Swagger JS library)
 
