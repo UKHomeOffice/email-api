@@ -7,17 +7,25 @@ import java.util.Collection;
 
 public class InternetAddressParserImpl implements InternetAddressParser {
 
-    public Collection<InternetAddress> getInternetAddresses(Collection<String> unparsedRecipients) throws InternetAddressParsingException {
+    public Collection<InternetAddress> getInternetAddresses(Collection<String> unparsedRecipients)
+        throws InternetAddressParsingException {
+
         Collection<InternetAddress> recipients = new ArrayList<>();
 
         for (String emailAddress : unparsedRecipients) {
-            try {
-                recipients.add(new InternetAddress(emailAddress));
-            } catch (AddressException e) {
-                throw new InternetAddressParsingException(e);
-            }
+            recipients.add(getInternetAddress(emailAddress));
         }
 
         return recipients;
+    }
+
+    private InternetAddress getInternetAddress(String sender)
+        throws InternetAddressParsingException {
+
+        try {
+            return new InternetAddress(sender);
+        } catch (AddressException e) {
+            throw new InternetAddressParsingException(e);
+        }
     }
 }

@@ -13,7 +13,8 @@ public class HtmlEmailFactoryImpl implements HtmlEmailFactory {
     private final boolean startTslEnabled;
     private final boolean requireTsl;
 
-    public HtmlEmailFactoryImpl(String hostname, int port, String username, String password, boolean sslOnConnect, boolean startTslEnabled, boolean requireTsl) {
+    public HtmlEmailFactoryImpl(String hostname, int port, String username, String password,
+        boolean sslOnConnect, boolean startTslEnabled, boolean requireTsl) {
         this.hostname = hostname;
         this.port = port;
         this.username = username;

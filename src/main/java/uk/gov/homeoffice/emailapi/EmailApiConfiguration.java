@@ -7,8 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class EmailApiConfiguration extends Configuration {
 
-    @JsonProperty("swagger")
-    public SwaggerBundleConfiguration swaggerBundleConfiguration;
+    @JsonProperty("swagger") public SwaggerBundleConfiguration swaggerBundleConfiguration;
 
     private String emailTemplatePath;
     private String hostname;
