@@ -13,7 +13,9 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/outbound")
 @Api("/outbound")
@@ -30,7 +32,13 @@ public class EmailSendingResource {
     @POST
     @Timed
     @ApiOperation("Send an email based on a template")
-    public void sendEmail(@ApiParam("Email template and params") TemplatedEmail templatedEmail) throws TemplatedEmailFactoryException, EmailException {
-        templatedEmailSender.sendEmail(templatedEmail);
+    public void sendEmail(@ApiParam("Email template and params") TemplatedEmail templatedEmail)
+        throws WebApplicationException, EmailException {
+
+        try {
+            templatedEmailSender.sendEmail(templatedEmail);
+        } catch (TemplatedEmailFactoryException e) {
+            throw new WebApplicationException(e, Response.Status.BAD_REQUEST);
+        }
     }
 }
