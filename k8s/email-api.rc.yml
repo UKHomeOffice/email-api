@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: email-api
-          image: quay.io/ukhomeofficedigital/email-api:v1.0.2
+          image: quay.io/ukhomeofficedigital/email-api:v2.0.0
           ports:
             - name: http
               containerPort: 8080
