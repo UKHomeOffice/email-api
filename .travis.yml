@@ -5,6 +5,22 @@ sudo: required
 services:
   - docker
 
+install:
+  - gem install mailcatcher
+  - gem install bundler
+
+before_script:
+  - mailcatcher
+  - touch /tmp/dropwizard.log
+
 script:
+  - ./gradlew clean install test
+  - SMTP_REQUIRE_TSL=false SMTP_START_TSL_ENABLED=false SMTP_ON_SSL_CONNECT=false SMTP_PASSWORD="" SMTP_USERNAME="" SMTP_PORT=1025 SMTP_HOSTNAME=localhost TEMPLATE_PATH=/tmp ./build/install/email-api/bin/email-api server src/main/resources/configuration.yaml > /tmp/dropwizard.log &
+  - cd integrationTests
+  - bundle install
+  - bundle exec cucumber
+  - cd ..
   - docker build -t quay.io/ukhomeofficedigital/email-api:travis .
-  - ./gradlew test
+
+after_failure:
+  - cat /tmp/dropwizard.log
