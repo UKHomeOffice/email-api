@@ -143,13 +143,13 @@ You can find Kubernetes examples in the [k8s directory](k8s).
 If you run the application without parameters it'll start the application.
 
 ```shell
-docker run quay.io/ukhomeofficedigital/email-api:v1.0.2
+docker run quay.io/ukhomeofficedigital/email-api:v2.0.0
 ```
 
 Otherwise it'll run the command you provide. For example the command below will run bash.
 
 ```shell
-docker run quay.io/ukhomeofficedigital/email-api:v1.0.2 bash
+docker run quay.io/ukhomeofficedigital/email-api:v2.0.0 bash
 ```
 
 ##### Environment Variables
