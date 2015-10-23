@@ -7,6 +7,19 @@ Then(/^the response code should be "([^"]*)"$/) do |expected_code|
   @response.code.should == expected_code.to_i
 end
 
+Given(/^there is a valid template called "([^"]*)"$/) do |expected_template_name|
+  File.write(File.join("/tmp", expected_template_name), <<EXAMPLETEMPLATE
+Hello ${user},
+
+You have received a test email.
+
+From
+The Email API.
+EXAMPLETEMPLATE
+)
+
+end
+
 Given(/^the MailCatcher is running$/) do
   HTTParty.get('http://127.0.0.1:1080/').code.should == 200
 end

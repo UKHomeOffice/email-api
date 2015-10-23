@@ -3,6 +3,8 @@ Feature: Verify email functionality
 
   Scenario: Successful email registration
     Given the MailCatcher is running
+    And there is a valid template called "test-html"
+    And there is a valid template called "test-text"
     When I send a POST request to "/outbound" with the following:
      """
      {
