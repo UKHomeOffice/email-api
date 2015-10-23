@@ -2,37 +2,32 @@ package uk.gov.homeoffice.emailapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Collection;
 import java.util.Map;
 
 public class TemplatedEmailImpl implements TemplatedEmail {
 
-    @JsonProperty
-    private final Collection<String> recipients;
+    @JsonProperty @NotEmpty private final Collection<String> recipients;
 
-    @JsonProperty
-    private final String sender;
+    @JsonProperty @Email private final String sender;
 
-    @JsonProperty
-    private final String subject;
+    @JsonProperty @NotEmpty private final String subject;
 
-    @JsonProperty
-    private final String htmlTemplate;
+    @JsonProperty @NotEmpty private final String htmlTemplate;
 
-    @JsonProperty
-    private final Map<String, Object> variables;
+    @JsonProperty private final Map<String, Object> variables;
 
-    @JsonProperty
-    private final String textTemplate;
+    @JsonProperty @NotEmpty private final String textTemplate;
 
     @JsonCreator
     public TemplatedEmailImpl(@JsonProperty("recipients") Collection<String> recipients,
-                              @JsonProperty("sender") String sender,
-                              @JsonProperty("subject") String subject,
-                              @JsonProperty("htmlTemplate") String htmlTemplate,
-                              @JsonProperty("variables") Map<String, Object> variables,
-                              @JsonProperty("textTemplate") String textTemplate) {
+        @JsonProperty("sender") String sender, @JsonProperty("subject") String subject,
+        @JsonProperty("htmlTemplate") String htmlTemplate,
+        @JsonProperty("variables") Map<String, Object> variables,
+        @JsonProperty("textTemplate") String textTemplate) {
 
         this.recipients = recipients;
         this.sender = sender;

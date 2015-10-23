@@ -9,15 +9,8 @@ public class HtmlEmailFactoryImplTest {
 
     @Test
     public void test_it_sets_server_config() throws Exception {
-        HtmlEmailFactoryImpl subject = new HtmlEmailFactoryImpl(
-                "localhost",
-                25,
-                "",
-                "",
-                false,
-                true,
-                false
-        );
+        HtmlEmailFactoryImpl subject =
+            new HtmlEmailFactoryImpl("localhost", 25, "", "", false, true, false);
 
         assertThat(subject.getHtmlEmail().getHostName(), equalTo("localhost"));
         assertThat(subject.getHtmlEmail().getSmtpPort(), equalTo("25"));

@@ -9,15 +9,16 @@ import com.wordnik.swagger.annotations.ApiResponses;
 import org.apache.commons.mail.EmailException;
 import uk.gov.homeoffice.emailapi.entities.TemplatedEmail;
 import uk.gov.homeoffice.emailapi.service.TemplatedEmailSender;
-import uk.gov.homeoffice.emailapi.templatedemailfactory.TemplatedEmailFactoryException;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing.InternetAddressParsingException;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.templating.TemplatePopulatorIOException;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.templating.TemplatePopulatorParsingException;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 @Path("/outbound")
 @Api("/outbound")
@@ -32,18 +33,16 @@ public class EmailSendingResource {
     }
 
     @ApiResponses(value = {@ApiResponse(code = 204, message = "Successfully sent"),
-        @ApiResponse(code = 400, message = "Invalid Email Template Request Sent, or Template in request does not exist"),
+        @ApiResponse(code = 442, message = "Posted entity is not valid in some way (See message for details)"),
         @ApiResponse(code = 500, message = "Email failed to send")})
     @POST
     @Timed
     @ApiOperation("Send an email based on a template")
-    public void sendEmail(@ApiParam("Email template and params") TemplatedEmail templatedEmail)
-        throws WebApplicationException, EmailException {
+    public void sendEmail(
+        @ApiParam("Email template and params") @Valid TemplatedEmail templatedEmail)
+        throws EmailException, TemplatePopulatorParsingException, TemplatePopulatorIOException,
+        InternetAddressParsingException {
 
-        try {
-            templatedEmailSender.sendEmail(templatedEmail);
-        } catch (TemplatedEmailFactoryException e) {
-            throw new WebApplicationException(e, Response.Status.BAD_REQUEST);
-        }
+        templatedEmailSender.sendEmail(templatedEmail);
     }
 }

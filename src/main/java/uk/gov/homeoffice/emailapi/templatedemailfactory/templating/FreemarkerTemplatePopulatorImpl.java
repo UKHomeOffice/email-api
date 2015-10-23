@@ -15,15 +15,26 @@ public class FreemarkerTemplatePopulatorImpl implements TemplatePopulator {
         this.freemarkerConfig = freemarkerConfig;
     }
 
-    public String populateTemplate(String templateName, Map<String, Object> variables) throws TemplatePopulatorException {
+    public String populateTemplate(String templateName, Map<String, Object> variables)
+        throws TemplatePopulatorIOException, TemplatePopulatorParsingException {
         try {
             Template template = freemarkerConfig.getTemplate(templateName);
             StringWriter out = new StringWriter();
             template.process(variables, out);
 
-            return out.toString();
-        } catch (IOException | TemplateException e) {
-            throw new TemplatePopulatorException(e);
+            String parsedTemplate = out.toString();
+
+            if (parsedTemplate.trim().isEmpty()) {
+                // Emails can never be empty
+                throw new TemplatePopulatorParsingException(
+                    "Template is Empty, emails can never be empty");
+            }
+
+            return parsedTemplate;
+        } catch (IOException e) {
+            throw new TemplatePopulatorIOException(e);
+        } catch (TemplateException e) {
+            throw new TemplatePopulatorParsingException(e);
         }
     }
 }

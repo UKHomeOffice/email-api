@@ -34,33 +34,29 @@ public class TemplatedEmailFactoryImplTest {
         internetAddresses = new ArrayList<>();
 
         InternetAddressParser internetAddressParser = mock(InternetAddressParser.class);
-        when(internetAddressParser.getInternetAddresses(Matchers.<Collection<String>>any())).thenReturn(internetAddresses);
+        when(internetAddressParser.getInternetAddresses(Matchers.<Collection<String>>any()))
+            .thenReturn(internetAddresses);
 
 
         HtmlEmailFactory htmlEmailFactory = mock(HtmlEmailFactory.class);
         when(htmlEmailFactory.getHtmlEmail()).thenReturn(mock(HtmlEmail.class, CALLS_REAL_METHODS));
 
-        templatedEmailFactory = new TemplatedEmailFactoryImpl(
-                templatePopulator,
-                internetAddressParser,
-                htmlEmailFactory
-        );
+        templatedEmailFactory =
+            new TemplatedEmailFactoryImpl(templatePopulator, internetAddressParser,
+                htmlEmailFactory);
     }
 
     @Test
     public void test_it_sets_the_recipients() throws Exception {
-        when(templatePopulator.populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any())).thenReturn("Template Contents");
+        when(templatePopulator
+            .populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any()))
+            .thenReturn("Template Contents");
 
         internetAddresses.add(new InternetAddress("test@example.com"));
 
-        TemplatedEmail input = new TemplatedEmailImpl(
-                new ArrayList<>(),
-                "sender@example.com",
-                "Subject",
-                "html template",
-                new HashMap<>(),
-                "text template"
-        );
+        TemplatedEmail input =
+            new TemplatedEmailImpl(new ArrayList<>(), "sender@example.com", "Subject",
+                "html template", new HashMap<>(), "text template");
         HtmlEmail output = templatedEmailFactory.build(input);
 
         assertThat(output.getToAddresses(), equalTo(internetAddresses));
@@ -68,18 +64,15 @@ public class TemplatedEmailFactoryImplTest {
 
     @Test
     public void test_it_sets_from() throws Exception {
-        when(templatePopulator.populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any())).thenReturn("Template Contents");
+        when(templatePopulator
+            .populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any()))
+            .thenReturn("Template Contents");
 
         internetAddresses.add(new InternetAddress("test@example.com"));
 
-        TemplatedEmail input = new TemplatedEmailImpl(
-                new ArrayList<>(),
-                "sender@example.com",
-                "Subject",
-                "html template",
-                new HashMap<>(),
-                "text template"
-        );
+        TemplatedEmail input =
+            new TemplatedEmailImpl(new ArrayList<>(), "sender@example.com", "Subject",
+                "html template", new HashMap<>(), "text template");
         HtmlEmail output = templatedEmailFactory.build(input);
         InternetAddress expected = new InternetAddress("sender@example.com");
 
@@ -88,18 +81,15 @@ public class TemplatedEmailFactoryImplTest {
 
     @Test
     public void test_it_sets_subject() throws Exception {
-        when(templatePopulator.populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any())).thenReturn("Template Contents");
+        when(templatePopulator
+            .populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any()))
+            .thenReturn("Template Contents");
 
         internetAddresses.add(new InternetAddress("test@example.com"));
 
-        TemplatedEmail input = new TemplatedEmailImpl(
-                new ArrayList<>(),
-                "sender@example.com",
-                "Subject",
-                "html template",
-                new HashMap<>(),
-                "text template"
-        );
+        TemplatedEmail input =
+            new TemplatedEmailImpl(new ArrayList<>(), "sender@example.com", "Subject",
+                "html template", new HashMap<>(), "text template");
         HtmlEmail output = templatedEmailFactory.build(input);
 
         assertThat(output.getSubject(), equalTo("Subject"));
@@ -107,18 +97,14 @@ public class TemplatedEmailFactoryImplTest {
 
     @Test
     public void test_it_sets_html_template() throws Exception {
-        when(templatePopulator.populateTemplate(anyString(), Matchers.<Map<String, Object>>any())).thenReturn("Template Contents");
+        when(templatePopulator.populateTemplate(anyString(), Matchers.<Map<String, Object>>any()))
+            .thenReturn("Template Contents");
 
         internetAddresses.add(new InternetAddress("test@example.com"));
 
-        TemplatedEmail input = new TemplatedEmailImpl(
-                new ArrayList<>(),
-                "sender@example.com",
-                "Subject",
-                "html template",
-                new HashMap<>(),
-                "text template"
-        );
+        TemplatedEmail input =
+            new TemplatedEmailImpl(new ArrayList<>(), "sender@example.com", "Subject",
+                "html template", new HashMap<>(), "text template");
         HtmlEmail output = templatedEmailFactory.build(input);
 
         verify(output).setHtmlMsg("Template Contents");
@@ -126,18 +112,15 @@ public class TemplatedEmailFactoryImplTest {
 
     @Test
     public void test_it_sets_text_template() throws Exception {
-        when(templatePopulator.populateTemplate(any(String.class), Matchers.<Map<String, Object>>any())).thenReturn("Template Contents");
+        when(templatePopulator
+            .populateTemplate(any(String.class), Matchers.<Map<String, Object>>any()))
+            .thenReturn("Template Contents");
 
         internetAddresses.add(new InternetAddress("test@example.com"));
 
-        TemplatedEmail input = new TemplatedEmailImpl(
-                new ArrayList<>(),
-                "sender@example.com",
-                "Subject",
-                "html template",
-                new HashMap<>(),
-                "text template"
-        );
+        TemplatedEmail input =
+            new TemplatedEmailImpl(new ArrayList<>(), "sender@example.com", "Subject",
+                "html template", new HashMap<>(), "text template");
         HtmlEmail output = templatedEmailFactory.build(input);
 
         verify(output).setTextMsg("Template Contents");

@@ -29,28 +29,32 @@ public class TemplatedEmailImplTest {
 
     @Test
     public void it_has_a_subject() {
-        TemplatedEmailImpl subject = new TemplatedEmailImpl(null, null, "subject", null, null, null);
+        TemplatedEmailImpl subject =
+            new TemplatedEmailImpl(null, null, "subject", null, null, null);
 
         assertThat(subject.getSubject(), equalTo("subject"));
     }
 
     @Test
     public void it_has_a_html_template() {
-        TemplatedEmailImpl subject = new TemplatedEmailImpl(null, null, null, "html template", null, null);
+        TemplatedEmailImpl subject =
+            new TemplatedEmailImpl(null, null, null, "html template", null, null);
 
         assertThat(subject.getHtmlTemplate(), equalTo("html template"));
     }
 
     @Test
     public void it_has_a_txt_template() {
-        TemplatedEmailImpl subject = new TemplatedEmailImpl(null, null, null, null, null, "txt template");
+        TemplatedEmailImpl subject =
+            new TemplatedEmailImpl(null, null, null, null, null, "txt template");
 
         assertThat(subject.getTextTemplate(), equalTo("txt template"));
     }
 
     @Test
     public void it_has_variables() {
-        TemplatedEmailImpl subject = new TemplatedEmailImpl(null, null, null, null, new HashMap<>(), null);
+        TemplatedEmailImpl subject =
+            new TemplatedEmailImpl(null, null, null, null, new HashMap<>(), null);
 
         assertThat(subject.getVariables(), instanceOf(HashMap.class));
     }

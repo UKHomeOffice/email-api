@@ -5,5 +5,6 @@ import java.util.Collection;
 
 public interface InternetAddressParser {
 
-    Collection<InternetAddress> getInternetAddresses(Collection<String> unparsedRecipients) throws InternetAddressParsingException;
+    Collection<InternetAddress> getInternetAddresses(Collection<String> unparsedRecipients)
+        throws InternetAddressParsingException;
 }
