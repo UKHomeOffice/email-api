@@ -1,4 +1,4 @@
-package uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing;
+package uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing;
 
 import org.junit.Test;
 
@@ -12,26 +12,26 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class InternetAddressParserImplTest {
 
     @Test
-    public void test_it_can_create_internet_addresses() throws Exception {
-        InternetAddressParserImpl internetAddressParser = new InternetAddressParserImpl();
-        ArrayList<String> addresses = new ArrayList<>();
+    public void testItCanCreateInternetAddresses() throws Exception {
+        final InternetAddressParserImpl internetAddressParser = new InternetAddressParserImpl();
+        final ArrayList<String> addresses = new ArrayList<>();
         addresses.add("test@example.net");
         addresses.add("test user <test@example.org>");
 
-        Collection<InternetAddress> expected = new ArrayList<>();
+        final Collection<InternetAddress> expected = new ArrayList<>();
         expected.add(new InternetAddress("test@example.net"));
         expected.add(new InternetAddress("test@example.org", "test user"));
 
-        Collection<InternetAddress> actual = internetAddressParser.getInternetAddresses(addresses);
+        final Collection<InternetAddress> actual = internetAddressParser.getInternetAddresses(addresses);
 
         assertThat(actual, equalTo(expected));
     }
 
 
     @Test(expected = InternetAddressParsingException.class)
-    public void test_it_throws_exceptions_on_invalid_addresses() throws Exception {
-        InternetAddressParserImpl internetAddressParser = new InternetAddressParserImpl();
-        ArrayList<String> addresses = new ArrayList<>();
+    public void testItThrowsExceptionsOnInvalidAddresses() throws Exception {
+        final InternetAddressParserImpl internetAddressParser = new InternetAddressParserImpl();
+        final ArrayList<String> addresses = new ArrayList<>();
         addresses.add("not a real address");
         internetAddressParser.getInternetAddresses(addresses);
     }

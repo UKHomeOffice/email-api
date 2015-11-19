@@ -1,4 +1,4 @@
-package uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing;
+package uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing;
 
 import javax.mail.internet.InternetAddress;
 import java.util.Collection;

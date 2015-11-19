@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class TemplatedEmailImplTest {
 
     @Test
-    public void test_it_has_recipients() {
+    public void testItHasRecipients() {
         Collection<String> input = new ArrayList<>();
         TemplatedEmailImpl subject = new TemplatedEmailImpl(input, null, null, null, null, null);
 
@@ -21,14 +21,14 @@ public class TemplatedEmailImplTest {
     }
 
     @Test
-    public void it_has_a_sender() {
+    public void itHasASender() {
         TemplatedEmailImpl subject = new TemplatedEmailImpl(null, "sender", null, null, null, null);
 
         assertThat(subject.getSender(), equalTo("sender"));
     }
 
     @Test
-    public void it_has_a_subject() {
+    public void itHasASubject() {
         TemplatedEmailImpl subject =
             new TemplatedEmailImpl(null, null, "subject", null, null, null);
 
@@ -36,7 +36,7 @@ public class TemplatedEmailImplTest {
     }
 
     @Test
-    public void it_has_a_html_template() {
+    public void itHasAHtmlTemplate() {
         TemplatedEmailImpl subject =
             new TemplatedEmailImpl(null, null, null, "html template", null, null);
 
@@ -44,7 +44,7 @@ public class TemplatedEmailImplTest {
     }
 
     @Test
-    public void it_has_a_txt_template() {
+    public void itHasATxtTemplate() {
         TemplatedEmailImpl subject =
             new TemplatedEmailImpl(null, null, null, null, null, "txt template");
 
@@ -52,7 +52,7 @@ public class TemplatedEmailImplTest {
     }
 
     @Test
-    public void it_has_variables() {
+    public void itHasVariables() {
         TemplatedEmailImpl subject =
             new TemplatedEmailImpl(null, null, null, null, new HashMap<>(), null);
 

@@ -8,7 +8,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class HtmlEmailFactoryImplTest {
 
     @Test
-    public void test_it_sets_server_config() throws Exception {
+    public void testItSetsServerConfig() throws Exception {
         HtmlEmailFactoryImpl subject =
             new HtmlEmailFactoryImpl("localhost", 25, "", "", false, true, false);
 

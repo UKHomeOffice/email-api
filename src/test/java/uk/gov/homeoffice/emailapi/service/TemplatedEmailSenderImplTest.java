@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 public class TemplatedEmailSenderImplTest {
 
     @Test
-    public void it_gets_a_templated_email_and_sends_it() throws Exception {
+    public void itGetsATemplatedEmailAndSendsIt() throws Exception {
         TemplatedEmail mockTemplatedEmail = mock(TemplatedEmail.class);
         Email mockEmail = mock(Email.class);
         TemplatedEmailFactory mockFactory = mock(TemplatedEmailFactory.class);

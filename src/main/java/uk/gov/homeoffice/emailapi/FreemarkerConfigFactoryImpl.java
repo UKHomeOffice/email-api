@@ -7,17 +7,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class FreemarkerConfigFactoryImpl implements FreemarkerConfigFactory {
-    public Configuration buildFreemarkerConfig(String templateDirectory) {
+    public Configuration buildFreemarkerConfig(String templateDirectory) throws FreemarkerConfigException {
         Configuration freemarker = new Configuration(Configuration.VERSION_2_3_22);
 
         try {
             freemarker.setDirectoryForTemplateLoading(new File(templateDirectory));
         } catch (IOException e) {
-            System.err.println("Could not load template directory \"" + templateDirectory + "\".");
-            System.err.println();
-            System.err.print(e.getMessage());
-            e.printStackTrace(System.err);
-            System.exit(2);
+            throw new FreemarkerConfigException("Could not load template directory \"" + templateDirectory + "\".", e);
         }
 
         freemarker.setDefaultEncoding("UTF-8");
