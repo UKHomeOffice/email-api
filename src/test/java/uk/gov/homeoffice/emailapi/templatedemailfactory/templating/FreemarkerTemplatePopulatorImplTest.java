@@ -21,6 +21,8 @@ import static org.mockito.Mockito.when;
 
 public class FreemarkerTemplatePopulatorImplTest {
 
+    public static final String TEMPLATE_NAME = "template-name";
+
     @Test
     public void testItGetsContentOfTheTemplate()
         throws IOException, TemplateException, TemplatePopulatorParsingException,
@@ -28,9 +30,9 @@ public class FreemarkerTemplatePopulatorImplTest {
         Configuration freemarkerConfiguration = mock(Configuration.class);
         Template freemarkerTemplate = mock(Template.class);
 
-        when(freemarkerConfiguration.getTemplate("template-name")).thenReturn(freemarkerTemplate);
+        when(freemarkerConfiguration.getTemplate(TEMPLATE_NAME)).thenReturn(freemarkerTemplate);
 
-        Map<String, Object> expectedDataModel = new HashMap<>();
+        final Map<String, Object> expectedDataModel = new HashMap<>();
 
         doAnswer(invocation -> {
             Writer writer = (Writer) invocation.getArguments()[1];
@@ -45,7 +47,7 @@ public class FreemarkerTemplatePopulatorImplTest {
 
         FreemarkerTemplatePopulatorImpl subject =
             new FreemarkerTemplatePopulatorImpl(freemarkerConfiguration);
-        String actual = subject.populateTemplate("template-name", expectedDataModel);
+        final String actual = subject.populateTemplate(TEMPLATE_NAME, expectedDataModel);
 
         assertThat(actual, equalTo("Hello, world!"));
     }
@@ -54,17 +56,17 @@ public class FreemarkerTemplatePopulatorImplTest {
     public void testItWrapsExceptionsInIoError()
         throws IOException, TemplateException, TemplatePopulatorIOException,
         TemplatePopulatorParsingException {
-        Configuration freemarkerConfiguration = mock(Configuration.class);
+        final Configuration freemarkerConfiguration = mock(Configuration.class);
         Template freemarkerTemplate = mock(Template.class);
 
-        when(freemarkerConfiguration.getTemplate("template-name")).thenReturn(freemarkerTemplate);
+        when(freemarkerConfiguration.getTemplate(TEMPLATE_NAME)).thenReturn(freemarkerTemplate);
         Map<String, Object> expectedDataModel = new HashMap<>();
         doThrow(new IOException()).when(freemarkerTemplate)
             .process(eq(expectedDataModel), any(Writer.class));
 
         FreemarkerTemplatePopulatorImpl subject =
             new FreemarkerTemplatePopulatorImpl(freemarkerConfiguration);
-        subject.populateTemplate("template-name", expectedDataModel);
+        subject.populateTemplate(TEMPLATE_NAME, expectedDataModel);
     }
 
 
@@ -75,14 +77,14 @@ public class FreemarkerTemplatePopulatorImplTest {
         Configuration freemarkerConfiguration = mock(Configuration.class);
         Template freemarkerTemplate = mock(Template.class);
 
-        when(freemarkerConfiguration.getTemplate("template-name")).thenReturn(freemarkerTemplate);
+        when(freemarkerConfiguration.getTemplate(TEMPLATE_NAME)).thenReturn(freemarkerTemplate);
         Map<String, Object> expectedDataModel = new HashMap<>();
         doThrow(new TemplateException(null)).when(freemarkerTemplate)
             .process(eq(expectedDataModel), any(Writer.class));
 
-        FreemarkerTemplatePopulatorImpl subject =
+        final FreemarkerTemplatePopulatorImpl subject =
             new FreemarkerTemplatePopulatorImpl(freemarkerConfiguration);
-        subject.populateTemplate("template-name", expectedDataModel);
+        subject.populateTemplate(TEMPLATE_NAME, expectedDataModel);
     }
 
 
@@ -91,14 +93,14 @@ public class FreemarkerTemplatePopulatorImplTest {
         throws IOException, TemplateException, TemplatePopulatorIOException,
         TemplatePopulatorParsingException {
         Configuration freemarkerConfiguration = mock(Configuration.class);
-        Template freemarkerTemplate = mock(Template.class);
+        final Template freemarkerTemplate = mock(Template.class);
 
-        when(freemarkerConfiguration.getTemplate("template-name")).thenReturn(freemarkerTemplate);
+        when(freemarkerConfiguration.getTemplate(TEMPLATE_NAME)).thenReturn(freemarkerTemplate);
 
         Map<String, Object> expectedDataModel = new HashMap<>();
 
         doAnswer(invocation -> {
-            Writer writer = (Writer) invocation.getArguments()[1];
+            final Writer writer = (Writer) invocation.getArguments()[1];
             try {
                 writer.write("   ");
             } catch (IOException e) {
@@ -110,6 +112,6 @@ public class FreemarkerTemplatePopulatorImplTest {
 
         FreemarkerTemplatePopulatorImpl subject =
             new FreemarkerTemplatePopulatorImpl(freemarkerConfiguration);
-        subject.populateTemplate("template-name", expectedDataModel);
+        subject.populateTemplate(TEMPLATE_NAME, expectedDataModel);
     }
 }

@@ -31,7 +31,7 @@ public enum EmailApiStatus implements StatusType {
     @JsonValue
     public Map<String, List<String>> toEntity() {
 
-        Map<String, List<String>> map = new HashMap<>();
+        final Map<String, List<String>> map = new HashMap<>();
         List<String> errors = new ArrayList<>();
         errors.add(reason);
         map.put("errors", errors);

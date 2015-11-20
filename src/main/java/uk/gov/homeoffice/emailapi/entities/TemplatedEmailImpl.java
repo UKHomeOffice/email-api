@@ -26,7 +26,7 @@ public class TemplatedEmailImpl implements TemplatedEmail {
     public TemplatedEmailImpl(@JsonProperty("recipients") Collection<String> recipients,
         @JsonProperty("sender") String sender, @JsonProperty("subject") String subject,
         @JsonProperty("htmlTemplate") String htmlTemplate,
-        @JsonProperty("variables") Map<String, Object> variables,
+        @JsonProperty("variables") final Map<String, Object> variables,
         @JsonProperty("textTemplate") String textTemplate) {
 
         this.recipients = recipients;

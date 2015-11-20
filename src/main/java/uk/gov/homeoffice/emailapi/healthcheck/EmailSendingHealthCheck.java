@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class EmailSendingHealthCheck extends HealthCheck {
     private final HtmlEmailFactory htmlEmailFactory;
 
-    public EmailSendingHealthCheck(HtmlEmailFactory htmlEmailFactory) {
+    public EmailSendingHealthCheck(final HtmlEmailFactory htmlEmailFactory) {
         this.htmlEmailFactory = htmlEmailFactory;
     }
 
@@ -22,7 +22,7 @@ public class EmailSendingHealthCheck extends HealthCheck {
             testEmail.setSubject("Testing");
             testEmail.setFrom("health-check@example.com");
 
-            InternetAddress testToAddress = new InternetAddress("health-check@example.net");
+            final InternetAddress testToAddress = new InternetAddress("health-check@example.net");
             ArrayList<InternetAddress> toAddresses = new ArrayList<>();
             toAddresses.add(testToAddress);
 

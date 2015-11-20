@@ -27,13 +27,13 @@ public class TemplatedEmailFactoryImpl implements TemplatedEmailFactory {
         this.htmlEmailFactory = htmlEmailFactory;
     }
 
-    public HtmlEmail build(TemplatedEmail templatedEmail)
+    public HtmlEmail build(final TemplatedEmail templatedEmail)
         throws EmailException, TemplatePopulatorParsingException, TemplatePopulatorIOException,
         InternetAddressParsingException {
 
         HtmlEmail email = htmlEmailFactory.getHtmlEmail();
 
-        Collection<InternetAddress> recipients =
+        final Collection<InternetAddress> recipients =
             addressParser.getInternetAddresses(templatedEmail.getRecipients());
         email.setTo(recipients);
 
@@ -49,7 +49,7 @@ public class TemplatedEmailFactoryImpl implements TemplatedEmailFactory {
             .populateTemplate(templatedEmail.getHtmlTemplate(), templatedEmail.getVariables());
         email.setHtmlMsg(htmlProcessedTemplate);
 
-        String txtProcessedTemplate = templateEngine
+        final String txtProcessedTemplate = templateEngine
             .populateTemplate(templatedEmail.getTextTemplate(), templatedEmail.getVariables());
         email.setTextMsg(txtProcessedTemplate);
 

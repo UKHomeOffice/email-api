@@ -39,7 +39,7 @@ public class EmailApiApplication extends Application<EmailApiConfiguration> {
     }
 
     @Override
-    public void initialize(Bootstrap<EmailApiConfiguration> bootstrap) {
+    public void initialize(final Bootstrap<EmailApiConfiguration> bootstrap) {
         bootstrap.setConfigurationSourceProvider(
             new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(),
                 new EnvironmentVariableSubstitutor()));
@@ -62,17 +62,17 @@ public class EmailApiApplication extends Application<EmailApiConfiguration> {
         environment.jersey().register(TemplatePopulatorParsingExceptionMapper.class);
         environment.jersey().register(EmailExceptionMapper.class);
 
-        Configuration freemarkerConfig =
+        final Configuration freemarkerConfig =
             freemarkerConfigFactory.buildFreemarkerConfig(configuration.getEmailTemplatePath());
 
         TemplatePopulator freemarkerTemplateParser =
             new FreemarkerTemplatePopulatorImpl(freemarkerConfig);
-        InternetAddressParser internetAddressParser = new InternetAddressParserImpl();
+        final InternetAddressParser internetAddressParser = new InternetAddressParserImpl();
         HtmlEmailFactory htmlEmailFactory =
             new HtmlEmailFactoryImpl(configuration.getHostname(), configuration.getPort(),
                 configuration.getUsername(), configuration.getPassword(),
-                configuration.getOnSslConnect(), configuration.getStartTslEnabled(),
-                configuration.getRequireTsl());
+                configuration.isOnSslConnect(), configuration.isStartTslEnabled(),
+                configuration.isRequireTsl());
 
         TemplatedEmailFactory templatedEmailFactory =
             new TemplatedEmailFactoryImpl(freemarkerTemplateParser, internetAddressParser,
