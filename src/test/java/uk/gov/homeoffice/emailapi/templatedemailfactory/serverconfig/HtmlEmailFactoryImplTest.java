@@ -9,7 +9,7 @@ public class HtmlEmailFactoryImplTest {
 
     @Test
     public void testItSetsServerConfig() throws Exception {
-        HtmlEmailFactoryImpl subject =
+        final HtmlEmailFactoryImpl subject =
             new HtmlEmailFactoryImpl("localhost", 25, "", "", false, true, false);
 
         assertThat(subject.getHtmlEmail().getHostName(), equalTo("localhost"));

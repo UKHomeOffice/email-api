@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -17,12 +18,12 @@ public class TemplatedEmailImplTest {
         Collection<String> input = new ArrayList<>();
         TemplatedEmailImpl subject = new TemplatedEmailImpl(input, null, null, null, null, null);
 
-        assertThat(subject.getRecipients(), instanceOf(ArrayList.class));
+        assertThat(subject.getRecipients(), instanceOf(List.class));
     }
 
     @Test
     public void itHasASender() {
-        TemplatedEmailImpl subject = new TemplatedEmailImpl(null, "sender", null, null, null, null);
+        final TemplatedEmailImpl subject = new TemplatedEmailImpl(null, "sender", null, null, null, null);
 
         assertThat(subject.getSender(), equalTo("sender"));
     }
@@ -53,7 +54,7 @@ public class TemplatedEmailImplTest {
 
     @Test
     public void itHasVariables() {
-        TemplatedEmailImpl subject =
+        final TemplatedEmailImpl subject =
             new TemplatedEmailImpl(null, null, null, null, new HashMap<>(), null);
 
         assertThat(subject.getVariables(), instanceOf(HashMap.class));

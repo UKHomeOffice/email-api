@@ -18,7 +18,7 @@ public class FreemarkerTemplatePopulatorImpl implements TemplatePopulator {
     public String populateTemplate(String templateName, Map<String, Object> variables)
         throws TemplatePopulatorIOException, TemplatePopulatorParsingException {
         try {
-            Template template = freemarkerConfig.getTemplate(templateName);
+            final Template template = freemarkerConfig.getTemplate(templateName);
             StringWriter out = new StringWriter();
             template.process(variables, out);
 

@@ -46,17 +46,17 @@ public class EmailApiConfiguration extends Configuration {
     }
 
     @JsonProperty
-    public boolean getOnSslConnect() {
+    public boolean isOnSslConnect() {
         return onSslConnect;
     }
 
     @JsonProperty
-    public boolean getStartTslEnabled() {
+    public boolean isStartTslEnabled() {
         return startTslEnabled;
     }
 
     @JsonProperty
-    public boolean getRequireTsl() {
+    public boolean isRequireTsl() {
         return requireTsl;
     }
 }
