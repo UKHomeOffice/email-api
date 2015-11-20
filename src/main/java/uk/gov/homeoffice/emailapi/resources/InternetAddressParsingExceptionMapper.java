@@ -2,7 +2,7 @@ package uk.gov.homeoffice.emailapi.resources;
 
 import org.slf4j.LoggerFactory;
 import uk.gov.homeoffice.emailapi.entities.EmailApiStatus;
-import uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing.InternetAddressParsingException;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing.InternetAddressParsingException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

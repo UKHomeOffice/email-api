@@ -1,4 +1,4 @@
-package uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing;
+package uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -10,16 +10,16 @@ public class InternetAddressParserImpl implements InternetAddressParser {
     public Collection<InternetAddress> getInternetAddresses(Collection<String> unparsedRecipients)
         throws InternetAddressParsingException {
 
-        Collection<InternetAddress> recipients = new ArrayList<>();
+        final Collection<InternetAddress> recipients = new ArrayList<>();
 
-        for (String emailAddress : unparsedRecipients) {
+        for (final String emailAddress : unparsedRecipients) {
             recipients.add(getInternetAddress(emailAddress));
         }
 
         return recipients;
     }
 
-    private InternetAddress getInternetAddress(String sender)
+    private InternetAddress getInternetAddress(final String sender)
         throws InternetAddressParsingException {
 
         try {

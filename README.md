@@ -1,6 +1,6 @@
 # Email API
 
-[![GitHub version](https://badge.fury.io/gh/ukhomeoffice%2Femail-api.svg)](https://badge.fury.io/gh/ukhomeoffice%2Femail-api) [![Build Status](https://travis-ci.org/UKHomeOffice/email-api.svg?branch=master)](https://travis-ci.org/UKHomeOffice/email-api) [![Docker Repository on Quay.io](https://quay.io/repository/ukhomeofficedigital/email-api/status "Docker Repository on Quay.io")](https://quay.io/repository/ukhomeofficedigital/email-api)
+[![GitHub version](https://badge.fury.io/gh/ukhomeoffice%2Femail-api.svg)](https://badge.fury.io/gh/ukhomeoffice%2Femail-api) [![Build Status](https://travis-ci.org/UKHomeOffice/email-api.svg?branch=master)](https://travis-ci.org/UKHomeOffice/email-api) [![Docker Repository on Quay.io](https://quay.io/repository/ukhomeofficedigital/email-api/status "Docker Repository on Quay.io")](https://quay.io/repository/ukhomeofficedigital/email-api) [![Codacy Badge](https://api.codacy.com/project/badge/grade/8fad759d912b4a5793dfd101e71861f8)](https://www.codacy.com/app/purplebooth/email-api)
 
 This is an service that will allow you to send templated emails via a RESTful API. 
 

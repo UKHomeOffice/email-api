@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.mockito.Matchers;
 import uk.gov.homeoffice.emailapi.entities.TemplatedEmail;
 import uk.gov.homeoffice.emailapi.entities.TemplatedEmailImpl;
-import uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing.InternetAddressParser;
-import uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing.InternetAddressParsingException;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing.InternetAddressParser;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing.InternetAddressParsingException;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.serverconfig.HtmlEmailFactory;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.templating.TemplatePopulator;
 
@@ -47,7 +47,7 @@ public class TemplatedEmailFactoryImplTest {
     }
 
     @Test
-    public void test_it_sets_the_recipients() throws Exception {
+    public void testItSetsTheRecipients() throws Exception {
         when(templatePopulator
             .populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any()))
             .thenReturn("Template Contents");
@@ -63,7 +63,7 @@ public class TemplatedEmailFactoryImplTest {
     }
 
     @Test
-    public void test_it_sets_from() throws Exception {
+    public void testItSetsFrom() throws Exception {
         when(templatePopulator
             .populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any()))
             .thenReturn("Template Contents");
@@ -80,7 +80,7 @@ public class TemplatedEmailFactoryImplTest {
     }
 
     @Test
-    public void test_it_sets_subject() throws Exception {
+    public void testItSetsSubject() throws Exception {
         when(templatePopulator
             .populateTemplate(Matchers.<String>any(), Matchers.<Map<String, Object>>any()))
             .thenReturn("Template Contents");
@@ -96,7 +96,7 @@ public class TemplatedEmailFactoryImplTest {
     }
 
     @Test
-    public void test_it_sets_html_template() throws Exception {
+    public void testItSetsHtmlTemplate() throws Exception {
         when(templatePopulator.populateTemplate(anyString(), Matchers.<Map<String, Object>>any()))
             .thenReturn("Template Contents");
 
@@ -111,7 +111,7 @@ public class TemplatedEmailFactoryImplTest {
     }
 
     @Test
-    public void test_it_sets_text_template() throws Exception {
+    public void testItSetsTextTemplate() throws Exception {
         when(templatePopulator
             .populateTemplate(any(String.class), Matchers.<Map<String, Object>>any()))
             .thenReturn("Template Contents");

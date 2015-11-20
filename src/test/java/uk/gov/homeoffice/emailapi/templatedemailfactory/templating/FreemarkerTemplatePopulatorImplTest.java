@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 public class FreemarkerTemplatePopulatorImplTest {
 
     @Test
-    public void test_it_gets_content_of_the_template()
+    public void testItGetsContentOfTheTemplate()
         throws IOException, TemplateException, TemplatePopulatorParsingException,
         TemplatePopulatorIOException {
         Configuration freemarkerConfiguration = mock(Configuration.class);
@@ -51,7 +51,7 @@ public class FreemarkerTemplatePopulatorImplTest {
     }
 
     @Test(expected = TemplatePopulatorIOException.class)
-    public void test_it_wraps_exceptions_in_io_error()
+    public void testItWrapsExceptionsInIoError()
         throws IOException, TemplateException, TemplatePopulatorIOException,
         TemplatePopulatorParsingException {
         Configuration freemarkerConfiguration = mock(Configuration.class);
@@ -69,7 +69,7 @@ public class FreemarkerTemplatePopulatorImplTest {
 
 
     @Test(expected = TemplatePopulatorParsingException.class)
-    public void test_it_wraps_exceptions_in_parse_error()
+    public void testItWrapsExceptionsInParseError()
         throws IOException, TemplateException, TemplatePopulatorIOException,
         TemplatePopulatorParsingException {
         Configuration freemarkerConfiguration = mock(Configuration.class);
@@ -87,7 +87,7 @@ public class FreemarkerTemplatePopulatorImplTest {
 
 
     @Test(expected = TemplatePopulatorParsingException.class)
-    public void test_it_throws_a_parse_error_on_empty_email()
+    public void testItThrowsAParseErrorOnEmptyEmail()
         throws IOException, TemplateException, TemplatePopulatorIOException,
         TemplatePopulatorParsingException {
         Configuration freemarkerConfiguration = mock(Configuration.class);

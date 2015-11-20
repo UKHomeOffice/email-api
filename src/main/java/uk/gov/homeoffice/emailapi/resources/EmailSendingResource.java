@@ -9,7 +9,7 @@ import com.wordnik.swagger.annotations.ApiResponses;
 import org.apache.commons.mail.EmailException;
 import uk.gov.homeoffice.emailapi.entities.TemplatedEmail;
 import uk.gov.homeoffice.emailapi.service.TemplatedEmailSender;
-import uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing.InternetAddressParsingException;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing.InternetAddressParsingException;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.templating.TemplatePopulatorIOException;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.templating.TemplatePopulatorParsingException;
 

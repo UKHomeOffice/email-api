@@ -18,8 +18,8 @@ import uk.gov.homeoffice.emailapi.service.TemplatedEmailSender;
 import uk.gov.homeoffice.emailapi.service.TemplatedEmailSenderImpl;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.TemplatedEmailFactory;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.TemplatedEmailFactoryImpl;
-import uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing.InternetAddressParser;
-import uk.gov.homeoffice.emailapi.templatedemailfactory.addressParsing.InternetAddressParserImpl;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing.InternetAddressParser;
+import uk.gov.homeoffice.emailapi.templatedemailfactory.addressparsing.InternetAddressParserImpl;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.serverconfig.HtmlEmailFactory;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.serverconfig.HtmlEmailFactoryImpl;
 import uk.gov.homeoffice.emailapi.templatedemailfactory.templating.FreemarkerTemplatePopulatorImpl;
@@ -55,7 +55,8 @@ public class EmailApiApplication extends Application<EmailApiConfiguration> {
     }
 
     @Override
-    public void run(EmailApiConfiguration configuration, Environment environment) {
+    public void run(EmailApiConfiguration configuration, Environment environment)
+        throws FreemarkerConfigException {
         environment.jersey().register(InternetAddressParsingExceptionMapper.class);
         environment.jersey().register(TemplatePopulatorIOExceptionMapper.class);
         environment.jersey().register(TemplatePopulatorParsingExceptionMapper.class);
